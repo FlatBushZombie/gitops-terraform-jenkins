@@ -71,6 +71,7 @@ try {
         ]]) {
           ansiColor('xterm') {
             sh 'terraform show'
+            sh "terraform destroy"
           }
         }
       }
