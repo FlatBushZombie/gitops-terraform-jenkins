@@ -4,7 +4,6 @@ String credentialsId = 'awsCredentials'
 try {
   stage('checkout') {
     node {
-      properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
       cleanWs()
       checkout scm
       echo "Credential ID is ${AWS_ACCESS_KEY_ID}"
