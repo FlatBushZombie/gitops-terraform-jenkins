@@ -6,8 +6,6 @@ try {
     node {
       cleanWs()
       checkout scm
-      echo "Credential ID is ${AWS_ACCESS_KEY_ID}"
-      echo "Access Key is ${AWS_SECRET_ACCESS_KEY}"
     }
   }
 

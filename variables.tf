@@ -2,14 +2,17 @@ variable "instance_count" {
   default = 1
 }
 
-variable "key_name" {
-  description = "Private key name to use with instance"
-  default     = "terraform"
+variable "PATH_TO_PRIVATE_KEY" {
+  default = "terraform"
+}
+
+variable "PATH_TO_PUBLIC_KEY" {
+  default = "terraform.pub"
 }
 
 variable "instance_type" {
   description = "AWS instance type"
-  default     = "t3.small"
+  default     = "t2.micro"
 }
 
 variable "ami" {

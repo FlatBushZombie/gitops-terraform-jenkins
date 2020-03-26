@@ -1,7 +1,7 @@
 # Terraform state will be stored in S3
 terraform {
   backend "s3" {
-    bucket = "terraform-bucket-alex"
+    bucket = "charlie-jenkins"
     key    = "terraform.tfstate"
     region = "us-east-1"
   }
@@ -16,7 +16,8 @@ provider "aws" {
 resource "aws_instance" "default" {
   ami                    = var.ami
   count                  = var.instance_count
-  key_name               = var.key_name
+  # the public SSH key
+  key_name = aws_key_pair.terraformkeypair.key_name
   vpc_security_group_ids = [aws_security_group.default.id]
   source_dest_check      = false
   instance_type          = var.instance_type
