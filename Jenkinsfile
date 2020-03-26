@@ -6,6 +6,7 @@ try {
     node {
       cleanWs()
       checkout scm
+      echo "Credential ID is ${AWS_ACCESS_KEY_ID}"
     }
   }
 
@@ -15,8 +16,8 @@ try {
       withCredentials([[
         $class: 'AmazonWebServicesCredentialsBinding',
         credentialsId: credentialsId,
-        accessKeyVariable: "${AWS_ACCESS_KEY_ID}",
-        secretKeyVariable: "${AWS_SECRET_ACCESS_KEY}"
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
       ]]) {
         ansiColor('xterm') {
           sh 'terraform init'
@@ -31,8 +32,8 @@ try {
       withCredentials([[
         $class: 'AmazonWebServicesCredentialsBinding',
         credentialsId: credentialsId,
-        accessKeyVariable: "${AWS_ACCESS_KEY_ID}",
-        secretKeyVariable: "${AWS_SECRET_ACCESS_KEY}"
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
       ]]) {
         ansiColor('xterm') {
           sh 'terraform plan'
@@ -49,8 +50,8 @@ try {
         withCredentials([[
           $class: 'AmazonWebServicesCredentialsBinding',
           credentialsId: credentialsId,
-          accessKeyVariable: "${AWS_ACCESS_KEY_ID}",
-          secretKeyVariable: "${AWS_SECRET_ACCESS_KEY}"
+          accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+          secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
         ]]) {
           ansiColor('xterm') {
             sh 'terraform apply -auto-approve'
@@ -65,8 +66,8 @@ try {
         withCredentials([[
           $class: 'AmazonWebServicesCredentialsBinding',
           credentialsId: credentialsId,
-          accessKeyVariable: "${AWS_ACCESS_KEY_ID}",
-          secretKeyVariable: "${AWS_SECRET_ACCESS_KEY}"
+          accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+          secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
         ]]) {
           ansiColor('xterm') {
             sh 'terraform show'
